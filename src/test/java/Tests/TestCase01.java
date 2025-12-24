@@ -43,7 +43,7 @@ public class TestCase01 extends BaseTest {
 
         // (Step 6)
         String validName = "ExampleUser";
-        String validEmail = "exampleUser+1@example.com";
+        String validEmail = "exampleUser+2@example.com";
         loginSignupPage.signupNameFieldInput(validName);
         loginSignupPage.signupEmailFieldInput(validEmail);
 
@@ -140,8 +140,8 @@ public class TestCase01 extends BaseTest {
         Assert.assertEquals(loginSignupPage.signupFormTitle.getText(), "New User Signup!");
 
         // (Step 6)
-        String validName = excelReader.getStringData("AddNew", 1, 0);
-        String validEmail = excelReader.getStringData("AddNew", 1, 1);
+        String validName = excelReader.getStringData("AddNew", 2, 0);
+        String validEmail = excelReader.getStringData("AddNew", 2, 1);
         loginSignupPage.signupNameFieldInput(validName);
         loginSignupPage.signupEmailFieldInput(validEmail);
 
