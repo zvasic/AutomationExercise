@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class TestCase19 extends BaseTest {
+public class TestCase19_RemoveProductsFromCart extends BaseTest {
 
     @BeforeMethod
     public void setUpPage() {

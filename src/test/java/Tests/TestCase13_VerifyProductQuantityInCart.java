@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestCase13 extends BaseTest {
+public class TestCase13_VerifyProductQuantityInCart extends BaseTest {
 
     @BeforeMethod
     public void setUpPage() {

@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.time.Duration;
 
-public class TestCase09 extends BaseTest {
+public class TestCase09_SearchProduct extends BaseTest {
 
     @BeforeMethod
     public void setUpPage() {

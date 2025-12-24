@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestCase08 extends BaseTest {
+public class TestCase21_AddReviewOnProduct extends BaseTest {
 
     @BeforeMethod
     public void setUpPage() {
@@ -23,47 +23,38 @@ public class TestCase08 extends BaseTest {
     }
 
     @Test
-    public void VerifyAllProductsAndProductDetailPage(){
+    public void AddReviewOnProduct(){
         // (Step 2)
         String homepage = "https://automationexercise.com/";
         driver.navigate().to(homepage);
 
         // (Step 3)
-        Assert.assertEquals(driver.getCurrentUrl(), homepage);
-
-        // (Step 4)
         topMenuPage.clickOnMenuItem("Products");
 
-        // (Step 5)
+        // (Step 4)
         Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/products");
         Assert.assertTrue(productsPage.pageTitle.isDisplayed());
         Assert.assertEquals(productsPage.pageTitle.getText().trim().toLowerCase(), "All Products".toLowerCase());
 
-        // (Step 6)
+        // (Step 5)
         Assert.assertFalse(productsPage.listOfProducts.isEmpty());
 
-        /*
-        // Add to cart element with specific id (Step 7)
-        String productId = "1";
-        productsPage.clickOnViewProductButton(productId);
-
-        // (Step 8)
-        Assert.assertEquals(driver.getCurrentUrl(),"https://automationexercise.com/product_details" + productId);
-        */
-
-        // Add to cart first element (Step 7)
         scrollToELement(productsPage.listOfViewProductButtons.get(0));
         productsPage.clickOnFirstProductViewButton();
 
-        // (Step 8)
         Assert.assertTrue(driver.getCurrentUrl().startsWith("https://automationexercise.com/product_details"));
 
-        // (Step 9)
-        Assert.assertTrue(productDetailPage.productName.isDisplayed());
-        Assert.assertTrue(productDetailPage.productCategory.isDisplayed());
-        Assert.assertTrue(productDetailPage.productPrice.isDisplayed());
-        Assert.assertTrue(productDetailPage.productAvailability.isDisplayed());
-        Assert.assertTrue(productDetailPage.productCondition.isDisplayed());
-        Assert.assertTrue(productDetailPage.productBrand.isDisplayed());
+        // (Step 6)
+        Assert.assertTrue(productDetailPage.reviewTitle.isDisplayed());
+        Assert.assertEquals(productDetailPage.reviewTitle.getText().trim().toLowerCase(), "Write Your Review".toLowerCase());
+
+        // (Step 7)
+        productDetailPage.reviewNameFieldInput("John");
+        productDetailPage.reviewEmailFieldInput("exampleUser+1@example.com");
+        productDetailPage.reviewTextFieldInput("Some review text");
+        productDetailPage.clickOnReviewSubmitButton();
+
+        Assert.assertTrue(productDetailPage.successMessage.isDisplayed());
+        Assert.assertEquals(productDetailPage.successMessage.getText().trim(), "Thank you for your review.");
     }
 }

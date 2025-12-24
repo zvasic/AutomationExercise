@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.time.Duration;
 
-public class TestCase20 extends BaseTest {
+public class TestCase20_SearchProductsandVerifyCartAfterLogin extends BaseTest {
 
     @BeforeMethod
     public void setUpPage() {

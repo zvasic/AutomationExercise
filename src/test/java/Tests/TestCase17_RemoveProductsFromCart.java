@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestCase17 extends BaseTest {
+public class TestCase17_RemoveProductsFromCart extends BaseTest {
 
     @BeforeMethod
     public void pageSetUp() {

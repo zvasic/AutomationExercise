@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestCase22 extends BaseTest {
+public class TestCase22_AddItemFromRecommended extends BaseTest {
     @BeforeMethod
     public void pageSetUp() {
         // (Step 1))
@@ -23,7 +23,7 @@ public class TestCase22 extends BaseTest {
     }
 
     @Test
-    public void addItemFromRecommended() {
+    public void AddItemFromRecommended() {
         // Scroll to recomended section (Step 3)
 
         scrollToELement(homePage.recommendedItemsTitle);

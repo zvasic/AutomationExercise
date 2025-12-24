@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 
-public class TestCase16 extends BaseTest {
+public class TestCase16_PlaceOrderLoginBeforeCheckout extends BaseTest {
 
     @BeforeMethod
     public void setUpPage() {

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestCase02 extends BaseTest {
+public class TestCase04_LogoutUser extends BaseTest {
 
     @BeforeMethod
     public void pageSetUp() {
@@ -24,7 +24,7 @@ public class TestCase02 extends BaseTest {
     }
 
     @Test
-    public void LoginUserWithCorrectEmailAndPassword() {
+    public void LogoutUser() {
         // (Step 2)
         String homepage = "https://automationexercise.com/";
         driver.navigate().to(homepage);
@@ -50,11 +50,17 @@ public class TestCase02 extends BaseTest {
         Assert.assertTrue(topMenuPage.loggedInMsg.isDisplayed());
         Assert.assertTrue(topMenuPage.loggedInMsg.getText().trim().contains("Logged in as"));
 
-        // (Step 9 - Ignored)
+        // (Step 9)
+        topMenuPage.clickOnMenuItem("Logout");
+
+        // (Step 10)
+        Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/login");
+        Assert.assertTrue(loginSignupPage.loginFormTitle.isDisplayed());
+        Assert.assertEquals(loginSignupPage.loginFormTitle.getText(), "Login to your account");
     }
 
     @Test
-    public void LoginUserWithCorrectEmailAndPasswordExcel() throws IOException {
+    public void LogoutUserExcel() throws IOException {
         excelReader = new ExcelReader("data\\LoginData.xlsx");
 
         // (Step 2)
@@ -82,6 +88,12 @@ public class TestCase02 extends BaseTest {
         Assert.assertTrue(topMenuPage.loggedInMsg.isDisplayed());
         Assert.assertTrue(topMenuPage.loggedInMsg.getText().trim().contains("Logged in as"));
 
-        // (Step 9 - Ignored)
+        // (Step 9)
+        topMenuPage.clickOnMenuItem("Logout");
+
+        // (Step 10)
+        Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/login");
+        Assert.assertTrue(loginSignupPage.loginFormTitle.isDisplayed());
+        Assert.assertEquals(loginSignupPage.loginFormTitle.getText(), "Login to your account");
     }
 }

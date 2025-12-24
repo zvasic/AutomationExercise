@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestCase05 extends BaseTest {
+public class TestCase03_LoginUserWithIncorrectEmailAndPassword extends BaseTest {
 
     @BeforeMethod
     public void pageSetUp() {
@@ -24,7 +24,7 @@ public class TestCase05 extends BaseTest {
     }
 
     @Test
-    public void RegisterUserWithExistingEmail() {
+    public void LoginUserWithIncorrectEmailAndPassword() {
         // (Step 2)
         String homepage = "https://automationexercise.com/";
         driver.navigate().to(homepage);
@@ -37,25 +37,22 @@ public class TestCase05 extends BaseTest {
 
         // (Step 5)
         Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/login");
-        Assert.assertTrue(loginSignupPage.signupFormTitle.isDisplayed());
-        Assert.assertEquals(loginSignupPage.signupFormTitle.getText(), "New User Signup!");
+        Assert.assertTrue(loginSignupPage.loginFormTitle.isDisplayed());
+        Assert.assertEquals(loginSignupPage.loginFormTitle.getText().trim().toLowerCase(), "Login to your account".toLowerCase());
 
-        // (Step 6)
-        String validName = "ExampleUser";
-        String invalidEmail = "exampleUser+1@example.com";
-        loginSignupPage.signupNameFieldInput(validName);
-        loginSignupPage.signupEmailFieldInput(invalidEmail);
-
-        // (Step 7)
-        loginSignupPage.clickOnSignupButton();
+        // (Step 6 -7)
+        String validEmail = "exampleUser+100@example.com";
+        String validPassword = "somePassword100";
+        loginSignupPage.loginUser(validEmail, validPassword);
 
         // (Step 8)
+        Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/login");
         Assert.assertTrue(loginSignupPage.loginSignupMessage.isDisplayed());
-        Assert.assertEquals(loginSignupPage.loginSignupMessage.getText().trim(), "Email Address already exist!");
+        Assert.assertTrue(loginSignupPage.loginSignupMessage.getText().trim().toLowerCase().contains("Your email or password is incorrect!".toLowerCase()));
     }
 
     @Test
-    public void RegisterUserWithExistingEmailExcel() throws IOException {
+    public void LoginUserWithIncorrectEmailAndPasswordExcel() throws IOException {
         excelReader = new ExcelReader("data\\LoginData.xlsx");
 
         // (Step 2)
@@ -70,20 +67,17 @@ public class TestCase05 extends BaseTest {
 
         // (Step 5)
         Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/login");
-        Assert.assertTrue(loginSignupPage.signupFormTitle.isDisplayed());
-        Assert.assertEquals(loginSignupPage.signupFormTitle.getText(), "New User Signup!");
+        Assert.assertTrue(loginSignupPage.loginFormTitle.isDisplayed());
+        Assert.assertEquals(loginSignupPage.loginFormTitle.getText().trim().toLowerCase(), "Login to your account".toLowerCase());
 
-        // (Step 6)
-        String validName = excelReader.getStringData("LoginData", 4, 0);
-        String invalidEmail = excelReader.getStringData("LoginData", 4, 1);
-        loginSignupPage.signupNameFieldInput(validName);
-        loginSignupPage.signupEmailFieldInput(invalidEmail);
-
-        // (Step 7)
-        loginSignupPage.clickOnSignupButton();
+        // (Step 6 -7)
+        String validEmail = excelReader.getStringData("LoginData", 5, 1);
+        String validPassword = excelReader.getStringData("LoginData", 5, 2);
+        loginSignupPage.loginUser(validEmail, validPassword);
 
         // (Step 8)
+        Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/login");
         Assert.assertTrue(loginSignupPage.loginSignupMessage.isDisplayed());
-        Assert.assertEquals(loginSignupPage.loginSignupMessage.getText().trim(), "Email Address already exist!");
+        Assert.assertTrue(loginSignupPage.loginSignupMessage.getText().trim().toLowerCase().contains("Your email or password is incorrect!".toLowerCase()));
     }
 }
