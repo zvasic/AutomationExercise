@@ -4,7 +4,7 @@
 ![homepage](screenshots/automationexercise_homepage.jpg)
 
 ## 📌 About this project
-The project was created to practice test automation skills using the Selenium (Java) framework, utilizing skills learned in a course on the ITBootcamp. The website under test is a website specifically designed for automated testing. The project contains a total of 19 automated tests, created based on test cases defined by the site's developers.
+The project was created to practice test automation skills using the Selenium (Java) framework, utilizing skills learned in a course on the IT Bootcamp. The website under test is a website specifically designed for automated testing. The project contains a total of 19 automated tests, created based on test cases defined by the site's developers.
 
 - UI test automation
 - Functional testing
